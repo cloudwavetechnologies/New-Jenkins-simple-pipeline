@@ -1,13 +1,16 @@
 pipeline {
-  agent {
-   // docker { image 'node:16-alpine' }
-  }
-  stages {
-    stage('Test') {
-      steps {
-        sh 'node --version'
-      }
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'feature/SMA-Imp',
+                    url: 'https://github.com/cloudwavetechnologies/New-Jenkins-simple-pipeline/'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'echo "Building project..."'
+            }
+        }
     }
-  }
-}
-
+ }
